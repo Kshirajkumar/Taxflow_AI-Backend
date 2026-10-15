@@ -1,0 +1,45 @@
+services:
+  - type: web
+    name: taxflow-api
+    runtime: node
+    rootDir: .
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: INTAKE_SPOOL_PATH
+        value: /tmp/taxflow-intake-spool
+      - key: EXTRACTION_STAGING_PATH
+        value: /tmp/taxflow-staging
+      - key: MAX_INTAKE_BYTES
+        value: "26214400"
+      - key: SUPABASE_STORAGE_BUCKET
+        value: taxflow-intake
+      - key: TELEGRAM_API_BASE_URL
+        value: https://api.telegram.org
+      - key: DATABASE_URL
+        sync: false
+      - key: TAXFLOW_FIRM_ID
+        sync: false
+      - key: TAXFLOW_CLIENT_USER_ID
+        sync: false
+      - key: TAXFLOW_API_TOKEN
+        sync: false
+      - key: INTAKE_ENCRYPTION_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_WEBHOOK_SECRET
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
